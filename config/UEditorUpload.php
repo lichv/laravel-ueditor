@@ -30,6 +30,13 @@ return [
             'bucket'=>'',
             'url'=>'http://xxx.clouddn.com',//七牛分配的CDN域名,注意带上http://
 
+        ],
+        'alioss'=>[
+            'appId'=>'',
+            'appKey'=>'',
+            'bucket'=>'',
+            'host'=>'',
+            'imghost'=>'',
         ]
     ],
     /**
