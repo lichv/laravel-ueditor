@@ -3,16 +3,20 @@
 PHP 5.4+ , and Composer are required.
 
 To get the latest version of Laravel Exceptions, simply add the following line to the require block of your composer.json file:
-
+```
 "lichv/laravel-ueditor": "^0.1"
+```
+
 You'll then need to run composer install or composer update to download it and have the autoloader updated.
 
 Once Laravel Exceptions is installed, you need to register the service provider. Open up config/app.php and add the following to the providers key.
-
+```
 'Lichv\UEditor\UEditorServiceProvider'
+```
 then run
-
+```
 php artisan vendor:publish
+```
 #配置
 
 若以上安装没问题,自定义项目配置文件会在 config/laravel-u-editor.php (会自动生成)
