@@ -1,4 +1,5 @@
-<?php namespace Lichv\UEditor;
+<?php
+namespace Lichv\UEditor;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Response;
@@ -83,6 +84,12 @@ class Controller extends BaseController
                         $request))->getList();
                 } else if (config('UEditorUpload.core.mode') == 'qiniu') {
                     $result = with(new ListsQiniu(
+                        $config['imageManagerAllowFiles'],
+                        $config['imageManagerListSize'],
+                        $config['imageManagerListPath'],
+                        $request))->getList();
+                } else if (config('UEditorUpload.core.mode') == 'alioss') {
+                    $result = with(new ListsAlioss(
                         $config['imageManagerAllowFiles'],
                         $config['imageManagerListSize'],
                         $config['imageManagerListPath'],
