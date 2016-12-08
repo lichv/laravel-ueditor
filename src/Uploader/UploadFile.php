@@ -12,7 +12,6 @@ use Lichv\UEditor\Uploader\Upload;
  * @package Lichv\UEditor\Uploader
  */
 class UploadFile  extends Upload{
-    use UploadQiniu;
     use UploadAlioss;
     public function doUpload()
     {
@@ -65,11 +64,6 @@ class UploadFile  extends Upload{
                 $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
                 return false;
             }
-
-        }else if(config('UEditorUpload.core.mode')=='qiniu'){
-
-            $content=file_get_contents($this->file->getPathname());
-            return $this->uploadQiniu($this->filePath,$content);
 
         }else if(config('UEditorUpload.core.mode')=='alioss'){
 

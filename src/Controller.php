@@ -82,12 +82,6 @@ class Controller extends BaseController
                         $config['imageManagerListSize'],
                         $config['imageManagerListPath'],
                         $request))->getList();
-                } else if (config('UEditorUpload.core.mode') == 'qiniu') {
-                    $result = with(new ListsQiniu(
-                        $config['imageManagerAllowFiles'],
-                        $config['imageManagerListSize'],
-                        $config['imageManagerListPath'],
-                        $request))->getList();
                 } else if (config('UEditorUpload.core.mode') == 'alioss') {
                     $result = with(new ListsAlioss(
                         $config['imageManagerAllowFiles'],
@@ -106,8 +100,8 @@ class Controller extends BaseController
                         $config['fileManagerListSize'],
                         $config['fileManagerListPath'],
                         $request))->getList();
-                }else if (config('UEditorUpload.core.mode') == 'qiniu') {
-                    $result = with(new ListsQiniu(
+                }else if (config('UEditorUpload.core.mode') == 'alioss') {
+                    $result = with(new ListsAlioss(
                         $config['fileManagerAllowFiles'],
                         $config['fileManagerListSize'],
                         $config['fileManagerListPath'],

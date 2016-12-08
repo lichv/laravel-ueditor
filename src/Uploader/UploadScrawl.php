@@ -9,7 +9,6 @@ use Lichv\UEditor\Uploader\Upload;
  */
 class UploadScrawl extends Upload
 {
-    use UploadQiniu;
     use UploadAlioss;
 
 
@@ -62,11 +61,6 @@ class UploadScrawl extends Upload
                 $this->stateInfo = $this->stateMap[0];
                 return false;
             }
-
-        }else if(config('UEditorUpload.core.mode')=='qiniu'){
-
-
-            return $this->uploadQiniu($this->filePath,$img);
 
         }else if(config('UEditorUpload.core.mode')=='alioss'){
 

@@ -9,7 +9,6 @@ use Lichv\UEditor\Uploader\Upload;
  * @package Lichv\UEditor\Uploader
  */
 class UploadCatch  extends Upload{
-    use UploadQiniu;
     use UploadAlioss;
 
     public function doUpload()
@@ -88,10 +87,6 @@ class UploadCatch  extends Upload{
                 $this->stateInfo = $this->stateMap[0];
                 return true;
             }
-        }else if(config('UEditorUpload.core.mode')=='qiniu'){
-
-            return $this->uploadQiniu($this->filePath,$img);
-
         }else if(config('UEditorUpload.core.mode')=='alioss'){
 
             return $this->uploadAlioss($this->filePath,$img);
