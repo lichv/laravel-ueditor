@@ -24,8 +24,13 @@ trait UploadAlioss
         $ossClient = new OssClient(config('UEditorUpload.core.alioss.appId'), config('UEditorUpload.core.alioss.appKey'), config('UEditorUpload.core.alioss.host'));
         $filename = 'uploads/'.date("Y/m/d/",time()).$key;
         $result =$ossClient->uploadFile(config('UEditorUpload.core.alioss.bucket'),$filename,$content);
-        $imghost = empty(config('UEditorUpload.core.alioss.imghost'))?config('UEditorUpload.core.alioss.host'):config('UEditorUpload.core.alioss.imghost');
-        $this->fullName = $url = 'http://'.config('UEditorUpload.core.alioss.bucket').'.'.$imghost.'/'.$filename;
+        $host = config('UEditorUpload.core.alioss.host');
+        $imghost = empty(config('UEditorUpload.core.alioss.imghost'))?$host:config('UEditorUpload.core.alioss.imghost');
+        if (!in_array($fileType, [".png", ".jpg", ".jpeg", ".gif", ".bmp"]) ){
+            $this->fullName = $url = 'http://'.config('UEditorUpload.core.alioss.bucket').'.'.$host.'/'.$filename;   
+        }else{
+            $this->fullName = $url = 'http://'.config('UEditorUpload.core.alioss.bucket').'.'.$imghost.'/'.$filename;
+        }
         $this->stateInfo = $this->stateMap[0];
         return true;
     }
