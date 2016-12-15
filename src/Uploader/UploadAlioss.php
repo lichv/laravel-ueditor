@@ -26,7 +26,7 @@ trait UploadAlioss
         $result =$ossClient->uploadFile(config('UEditorUpload.core.alioss.bucket'),$filename,$content);
         $host = config('UEditorUpload.core.alioss.host');
         $imghost = empty(config('UEditorUpload.core.alioss.imghost'))?$host:config('UEditorUpload.core.alioss.imghost');
-        if (!in_array($fileType, [".png", ".jpg", ".jpeg", ".gif", ".bmp"]) ){
+        if (!in_array($this->fileType, [".png", ".jpg", ".jpeg", ".gif", ".bmp"]) ){
             $this->fullName = $url = 'http://'.config('UEditorUpload.core.alioss.bucket').'.'.$host.'/'.$filename;   
         }else{
             $this->fullName = $url = 'http://'.config('UEditorUpload.core.alioss.bucket').'.'.$imghost.'/'.$filename;
